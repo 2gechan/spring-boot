@@ -28,7 +28,7 @@ public class HomeController {
 
     @GetMapping("board")
     public List<BoardDto> getBoards(@RequestParam(defaultValue = "0") int page,
-                                    @RequestParam(defaultValue = "10") int size) {
+                                    @RequestParam(defaultValue = "5") int size) {
         log.debug("게시판 리스트 요청");
         int offset = page * size;
         int limit = size;
