@@ -56,9 +56,10 @@ ul.nav {
 
 ul.nav li {
     color: green;
-    padding: 6px;
+    padding: 5px;
     margin: 3px;
     font-size: large;
+    height: 35px;
 }
 
 ul.nav li:hover {

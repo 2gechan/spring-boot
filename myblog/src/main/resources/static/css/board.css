@@ -1,0 +1,31 @@
+div.board.container {
+    width: 100%;
+    height: 630px;
+    display: flex;
+    margin: 25px 0 20px 0;
+
+}
+
+div.board.main {
+    background-color: #ddd;
+    flex: 5;
+    height: 100%;
+
+}
+
+ul.board.category {
+    background-color: #eee;
+    list-style: none;
+    flex: 1;
+    height: 100%;
+    padding: 8px;
+}
+
+ul.board.category li {
+    text-align: center;
+    padding: 5px;
+}
+
+div.board.write {
+    background-color: green;
+}

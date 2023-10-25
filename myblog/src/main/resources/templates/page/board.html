@@ -1,0 +1,52 @@
+<html
+        lang="ko"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{/home}"
+>
+<section th:fragment="board" class="board">
+    <h1>게시판</h1>
+
+    <div class="board container">
+        <ul class="board category">
+
+            <button class="board button category">+</button>
+            <li>전체 글 보기</li>
+            <li>Java</li>
+            <li>References</li>
+
+
+        </ul>
+        <div class="board main">
+            <button class="board button write">글쓰기</button>
+            <ul>
+                <th:block th:each="BOARD : ${BOARDLIST}">
+                    <li>
+                        <span th:text="${BOARD.b_title}"></span>
+                        | <span th:text="${BOARD.b_writer}"></span>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section th:fragment="write" class="board">
+    <h1>게시판</h1>
+
+    <div class="board write">
+        <form method="POST" th:action="@{/board/write}">
+            <div><label>제목</label><input placeholder="제목" name="b_title"/></div>
+            <div><label>카테고리</label><input placeholder="카테고리" name="b_category"/></div>
+            <div><label>작성자</label><input placeholder="작성자" name="b_writer"/></div>
+            <div><label>작성 날짜</label><input placeholder="작성 날짜" name="b_date" type="date"/></div>
+            <div><label>내용</label><textarea placeholder="내용" name="b_text"></textarea></div>
+            <div>
+                <button type="submit">글 등록</button>
+                <button type="button">뒤로가기</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+</html>

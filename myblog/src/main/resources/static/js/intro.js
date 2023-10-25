@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const careerBtn = document.querySelector("button.button.career");
-    const eduBtn = document.querySelector("button.button.edu");
-    const certBtn = document.querySelector("button.button.cert");
+    const careerBtn = document.querySelector("button.intro.button.career");
+    const eduBtn = document.querySelector("button.intro.button.edu");
+    const certBtn = document.querySelector("button.intro.button.cert");
 
     careerBtn?.addEventListener("click", () => {
         document.location.href = "/update?category=career";

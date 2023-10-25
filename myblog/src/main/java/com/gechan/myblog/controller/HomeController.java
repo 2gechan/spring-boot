@@ -1,5 +1,6 @@
 package com.gechan.myblog.controller;
 
+import com.gechan.myblog.models.BoardDto;
 import com.gechan.myblog.models.ContentDto;
 import com.gechan.myblog.service.ContentService;
 import lombok.extern.slf4j.Slf4j;
@@ -58,8 +59,9 @@ public class HomeController {
     @PostMapping("update")
     public String update(ContentDto dto, Model model) {
         contentService.insert(dto);
-//        model.addAttribute("BODY", "INTRO");
 
         return "redirect:/intro";
     }
+
+
 }

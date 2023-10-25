@@ -7,8 +7,10 @@
     <link rel="stylesheet" th:href="@{/css/intro.css}"/>
     <link rel="stylesheet" th:href="@{/css/portfolio.css}" />
     <link rel="stylesheet" th:href="@{/css/update.css}" />
+    <link rel="stylesheet" th:href="@{/css/board.css}" />
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/intro.js}"></script>
+    <script th:src="@{/js/board.js}"></script>
 </head>
 <body>
 <header th:replace="~{include :: header}"/>
@@ -28,6 +30,14 @@
 
     <th:block th:if="${BODY == 'UPDATE'}">
         <section th:replace="~{page/update :: update}"/>
+    </th:block>
+
+    <th:block th:if="${BODY == 'BOARD'}">
+        <section th:replace="~{page/board :: board}"/>
+    </th:block>
+
+    <th:block th:if="${BODY == 'BOARD_WRITE'}">
+        <section th:replace="~{page/board :: write}"/>
     </th:block>
 
     <footer th:replace="~{include :: footer}"/>
