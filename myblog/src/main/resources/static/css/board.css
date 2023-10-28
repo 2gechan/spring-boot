@@ -26,6 +26,16 @@ ul.board.category li {
     padding: 5px;
 }
 
+ul.board.category li:hover {
+    cursor: pointer;
+    border-bottom: 1px solid green;
+}
+
+ul.board.list {
+    list-style: none;
+    padding: 10px;
+}
+
 div.board.write {
-    background-color: green;
+
 }

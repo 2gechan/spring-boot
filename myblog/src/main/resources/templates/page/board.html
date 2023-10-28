@@ -9,17 +9,14 @@
 
     <div class="board container">
         <ul class="board category">
-
-            <button class="board button category">+</button>
             <li>전체 글 보기</li>
-            <li>Java</li>
-            <li>References</li>
-
-
+            <th:block th:each="CA : ${CATEGORY}">
+                <li th:text="${CA.category}" th:class="${CA.ct_seq}"></li>
+            </th:block>
         </ul>
         <div class="board main">
             <button class="board button write">글쓰기</button>
-            <ul>
+            <ul class="board list">
                 <th:block th:each="BOARD : ${BOARDLIST}">
                     <li>
                         <span th:text="${BOARD.b_title}"></span>

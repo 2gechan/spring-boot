@@ -1,13 +1,16 @@
 package com.gechan.myblog.controller;
 
 import com.gechan.myblog.models.BoardDto;
+import com.gechan.myblog.models.CategoryVO;
 import com.gechan.myblog.service.BoardService;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,10 +22,17 @@ public class BoardController {
     }
 
     @GetMapping("board")
-    public String board(Model model) {
+    public String board(Model model, @RequestParam(required = false, value = "ca", defaultValue = "all") String category) {
 
-        List<BoardDto> boardList = boardService.boardList();
+        List<BoardDto> boardList = new ArrayList<>();
+        if (category.equals("all")) {
+            boardList = boardService.boardList();
+        } else {
+            boardList = boardService.categoryBoardList(category);
+        }
+        List<CategoryVO> categoryList = boardService.categoryList();
         model.addAttribute("BOARDLIST", boardList);
+        model.addAttribute("CATEGORY", categoryList);
         model.addAttribute("BODY", "BOARD");
         return "home";
     }
@@ -40,4 +50,6 @@ public class BoardController {
 
         return "redirect:/board";
     }
+
+
 }
