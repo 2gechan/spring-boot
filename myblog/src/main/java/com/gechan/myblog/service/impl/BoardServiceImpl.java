@@ -26,6 +26,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public BoardDto findById(long b_seq) {
+        BoardDto dto = boardRepository.findById(b_seq).orElse(null);
+        return dto;
+    }
+
+    @Override
     public List<CategoryVO> categoryList() {
         List<CategoryVO> categoryList = categoryRepository.findAll();
         return categoryList;

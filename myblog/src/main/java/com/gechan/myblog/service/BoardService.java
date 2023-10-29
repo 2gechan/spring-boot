@@ -19,4 +19,6 @@ public interface BoardService {
 
     public List<CategoryVO> categoryList();
 
+    public BoardDto findById(long b_seq);
+
 }

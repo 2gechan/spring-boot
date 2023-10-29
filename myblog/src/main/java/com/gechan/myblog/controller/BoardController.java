@@ -17,6 +17,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+
     public BoardController(BoardService boardService) {
         this.boardService = boardService;
     }
@@ -49,6 +50,16 @@ public class BoardController {
         boardService.insert(dto);
 
         return "redirect:/board";
+    }
+
+    @GetMapping("board/detail")
+    public String board_detail(@RequestParam(value = "seq") String b_seq, Model model) {
+        long seq = Long.parseLong(b_seq);
+        BoardDto dto = boardService.findById(seq);
+        model.addAttribute("BOARD", dto);
+        model.addAttribute("BODY", "BOARD_DETAIL");
+
+        return "home";
     }
 
 

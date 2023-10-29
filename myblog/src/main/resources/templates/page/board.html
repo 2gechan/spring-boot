@@ -15,15 +15,22 @@
             </th:block>
         </ul>
         <div class="board main">
-            <button class="board button write">글쓰기</button>
-            <ul class="board list">
+            <div class="board button">
+                <button class="board button write">글쓰기</button>
+            </div>
+
+            <table class="board list">
+                <tr>
+                    <th>제목</th>
+                    <th>작성자</th>
+                </tr>
                 <th:block th:each="BOARD : ${BOARDLIST}">
-                    <li>
-                        <span th:text="${BOARD.b_title}"></span>
-                        | <span th:text="${BOARD.b_writer}"></span>
-                    </li>
+                    <tr th:class="${BOARD.b_seq}">
+                        <td th:text="${BOARD.b_title}"></td>
+                        <td th:text="${BOARD.b_writer}"></td>
+                    </tr>
                 </th:block>
-            </ul>
+            </table>
         </div>
     </div>
 </section>
@@ -46,4 +53,15 @@
     </div>
 </section>
 
+
+<section th:fragment="detail" class="detail">
+    <h1>Detail</h1>
+
+    <div class="board detail">
+        <div><label>제목</label><span th:text="${BOARD.b_title}"></span></div>
+        <div><label>작성자</label><span th:text="${BOARD.b_writer}"></span></div>
+        <div><label>카테고리</label><span th:text="${BOARD.b_category}"></span></div>
+        <div><label>글 내용</label><span th:text="${BOARD.b_text}"></span></div>
+    </div>
+</section>
 </html>

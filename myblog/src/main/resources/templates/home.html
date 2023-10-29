@@ -40,6 +40,10 @@
         <section th:replace="~{page/board :: write}"/>
     </th:block>
 
+    <th:block th:if="${BODY == 'BOARD_DETAIL'}">
+        <section th:replace="~{page/board :: detail}"/>
+    </th:block>
+
     <footer th:replace="~{include :: footer}"/>
 </div>
 </body>
