@@ -44,6 +44,10 @@
         <section th:replace="~{page/board :: detail}"/>
     </th:block>
 
+    <th:block th:if="${BODY == 'BOARD_UPDATE'}">
+        <section th:replace="~{page/board :: update}"/>
+    </th:block>
+
     <footer th:replace="~{include :: footer}"/>
 </div>
 </body>

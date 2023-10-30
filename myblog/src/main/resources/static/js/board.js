@@ -2,6 +2,27 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const board_write_btn = document.querySelector("button.board.button.write");
     const category_list = document.querySelector("ul.board.category");
     const board_table = document.querySelector("table.board.list");
+    const returnhome_btn = document.querySelector("button.returnhome");
+    const update_btn = document.querySelector("button.update");
+    const delete_btn = document.querySelector("button.delete");
+
+    returnhome_btn?.addEventListener("click", ()=> {
+        document.location.href="/board"
+    })
+
+    delete_btn?.addEventListener("click", (e)=> {
+        if (confirm("정말 삭제하시겠습니까 ?")) {
+            const target = e.target;
+            const id = target.dataset.id;
+            document.location.href = `/board/delete?seq=${id}`;
+        }
+    })
+
+    update_btn?.addEventListener("click", (e)=> {
+        const target = e.target;
+        const id = target.dataset.id;
+        document.location.href = `/board/update?seq=${id}`;
+    })
 
     board_write_btn?.addEventListener("click", ()=> {
         document.location.href = "/board/write";

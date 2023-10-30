@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface CategoryRepository extends JpaRepository<CategoryVO, Long> {
     @Query(value = "select * from category_list c where c.category=:b_category", nativeQuery = true)
     public CategoryVO findByCategory(String b_category);
+
 }

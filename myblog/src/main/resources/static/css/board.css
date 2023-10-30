@@ -46,6 +46,11 @@ table.board.list tr {
     padding: 10px;
 }
 
+table.board.list tr.table.header {
+    background-color: #a9cba9;
+    color: antiquewhite;
+}
+
 table.board.list tr:hover {
     background-color: #aaaaaa;
     cursor: pointer;
@@ -71,6 +76,10 @@ table.board.list tr:nth-of-type(even) {
     background-color: #eee;
 }
 
+table.board.list tr:hover {
+    background-color: #aaa;
+}
+
 div.board.button {
     width: 100%;
 }
@@ -80,4 +89,56 @@ button.board.button.write {
     margin-left: 10px;
     border: none;
     padding: 10px 10px;
+}
+
+div.board.write {
+    width: 70%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+div.board.detail {
+    width: 70%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+div.board.input {
+    width: 100%;
+    margin: 5px;
+    display: flex;
+}
+
+div.board.input label {
+    flex: 0.5;
+    text-align: right;
+    margin-right: 5px;
+}
+
+div.board.input input,
+div.board.input textarea {
+    padding: 4px;
+    flex: 3;
+    resize: none;
+}
+
+div.board.input.button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+div.board.input.button button {
+    padding: 6px 8px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 4px;
+    background-color: #eee;
+}
+
+div.board.input.button button:hover {
+    background-color: #ddd;
+    cursor: pointer;
 }

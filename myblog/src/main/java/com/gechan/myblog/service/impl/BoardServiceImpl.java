@@ -72,6 +72,18 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public void delete(long b_seq) {
-        boardRepository.deleteById(b_seq);
+        BoardDto dto = boardRepository.findById(b_seq).orElse(null);
+        if (dto != null) {
+            String category = dto.getB_category();
+            int count = boardRepository.findCategoryCount(category);
+            System.out.println(count);
+            if (count == 1) {
+                CategoryVO categoryVO = categoryRepository.findByCategory(category);
+                categoryRepository.delete(categoryVO);
+            }
+        }
+
+         boardRepository.deleteById(b_seq);
+
     }
 }

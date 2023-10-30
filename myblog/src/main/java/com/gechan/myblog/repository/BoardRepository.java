@@ -12,4 +12,7 @@ public interface BoardRepository extends JpaRepository<BoardDto, Long> {
 
     @Query(value = "select * from board_content b where b.b_category=:category", nativeQuery = true)
     public List<BoardDto> findByCategoryInBoard(String category);
+
+    @Query(value = "select count(*) from board_content b where b.b_category=:category", nativeQuery = true)
+    public int findCategoryCount(String category);
 }
