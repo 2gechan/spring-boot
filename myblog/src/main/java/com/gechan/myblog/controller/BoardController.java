@@ -26,11 +26,15 @@ public class BoardController {
     }
 
     @GetMapping("board")
-    public String board(Model model, @RequestParam(required = false, value = "ca", defaultValue = "all") String category) {
+    public String board(Model model, @RequestParam(required = false, value = "ca", defaultValue = "all") String category,
+                        @RequestParam(required = false, defaultValue = "1") String page) {
 
+        int pageNum = Integer.parseInt(page);
         List<BoardDto> boardList = new ArrayList<>();
+        int pageCount = boardService.pageCount();
         if (category.equals("all")) {
-            boardList = boardService.boardList();
+            boardList = boardService.boardList(pageNum);
+
         } else {
             boardList = boardService.categoryBoardList(category);
         }
@@ -38,6 +42,7 @@ public class BoardController {
         model.addAttribute("BOARDLIST", boardList);
         model.addAttribute("CATEGORY", categoryList);
         model.addAttribute("BODY", "BOARD");
+        model.addAttribute("PAGE", pageCount);
         return "home";
     }
 
@@ -81,7 +86,7 @@ public class BoardController {
     }
 
     @GetMapping("board/update")
-    public String update(@RequestParam(value ="seq")String b_seq, Model model) {
+    public String update(@RequestParam(value = "seq") String b_seq, Model model) {
         long seq = Long.parseLong(b_seq);
         BoardDto dto = boardService.findById(seq);
 
@@ -97,7 +102,6 @@ public class BoardController {
 
     @PostMapping("board/update")
     public String update(BoardDto dto) {
-
         return "redirect:/";
     }
 }

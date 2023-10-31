@@ -31,7 +31,14 @@
                     </tr>
                 </th:block>
             </table>
+
+            <div class="pagination">
+                <th:block th:each="i: ${#numbers.sequence(1, PAGE)}">
+                    <span th:class="${BOARD.b_category}" th:data-id="${i}" th:text="${i}"></span>
+                </th:block>
+            </div>
         </div>
+
     </div>
 </section>
 
@@ -41,13 +48,13 @@
     <div class="board write">
         <form method="POST" th:action="@{/board/write}">
             <div class="board input">
-                <label>제목</label><input placeholder="제목" name="b_title" />
+                <label>제목</label><input placeholder="제목" name="b_title"/>
             </div>
             <div class="board input">
-                <label>카테고리</label><input placeholder="카테고리" name="b_category" />
+                <label>카테고리</label><input placeholder="카테고리" name="b_category"/>
             </div>
             <div class="board input">
-                <label>작성자</label><input placeholder="작성자" name="b_writer" />
+                <label>작성자</label><input placeholder="작성자" name="b_writer"/>
             </div>
             <div class="board input">
                 <label>작성 날짜</label><input placeholder="작성 날짜" name="b_date" th:value="${DATE}" readonly/>
@@ -103,19 +110,19 @@
         <form method="POST" th:action="@{/board/write}">
             <div class="board input">
                 <label>게시글 번호</label>
-                <input placeholder="게시글 번호" name="b_seq" th:value="${BOARD.b_seq}" readonly />
+                <input placeholder="게시글 번호" name="b_seq" th:value="${BOARD.b_seq}" readonly/>
             </div>
             <div class="board input">
                 <label>제목</label>
-                <input placeholder="제목" name="b_title" th:value="${BOARD.b_title}" />
+                <input placeholder="제목" name="b_title" th:value="${BOARD.b_title}"/>
             </div>
             <div class="board input">
                 <label>카테고리</label>
-                <input placeholder="카테고리" name="b_category" th:value="${BOARD.b_category}" readonly />
+                <input placeholder="카테고리" name="b_category" th:value="${BOARD.b_category}" readonly/>
             </div>
             <div class="board input">
                 <label>작성자</label>
-                <input placeholder="작성자" name="b_writer" th:value="${BOARD.b_writer}" />
+                <input placeholder="작성자" name="b_writer" th:value="${BOARD.b_writer}"/>
             </div>
             <div class="board input">
                 <label>작성 날짜</label>

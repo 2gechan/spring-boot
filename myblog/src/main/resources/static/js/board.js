@@ -5,6 +5,19 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const returnhome_btn = document.querySelector("button.returnhome");
     const update_btn = document.querySelector("button.update");
     const delete_btn = document.querySelector("button.delete");
+    const page_container = document.querySelector("div.pagination");
+
+    const pageClick = (e) => {
+        const target = e.target;
+
+        if (target.tagName === "SPAN") {
+            const pageNum = target.className;
+            // alert(pageNum);
+            document.location.href = `/board?page=${pageNum}`;
+        }
+    }
+
+    page_container?.addEventListener("click", pageClick);
 
     returnhome_btn?.addEventListener("click", ()=> {
         document.location.href="/board"

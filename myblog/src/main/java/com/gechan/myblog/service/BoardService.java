@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BoardService {
 
-    public List<BoardDto> boardList();
+    public List<BoardDto> boardList(int page);
 
     public List<BoardDto> categoryBoardList(String category);
 
@@ -21,4 +21,5 @@ public interface BoardService {
 
     public BoardDto findById(long b_seq);
 
+    public int pageCount();
 }

@@ -14,14 +14,29 @@ public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
     private final CategoryRepository categoryRepository;
+
     public BoardServiceImpl(BoardRepository boardRepository, CategoryRepository categoryRepository) {
         this.boardRepository = boardRepository;
         this.categoryRepository = categoryRepository;
     }
 
     @Override
-    public List<BoardDto> boardList() {
-        List<BoardDto> boardList = boardRepository.findAll();
+    public int pageCount() {
+        int boardAllCount = boardRepository.boardCount();
+        System.out.println("게시글 총 개수 : " + boardAllCount);
+        int pageCount = boardAllCount / 10;
+
+        if (boardAllCount % 10 > 0) {
+            pageCount++;
+        }
+        return pageCount;
+    }
+
+    @Override
+    public List<BoardDto> boardList(int page) {
+        // List<BoardDto> boardList = boardRepository.findAll();
+        int offset = (page-1) * 10;
+        List<BoardDto> boardList = boardRepository.pageToBoard(offset);
         return boardList;
     }
 
@@ -43,7 +58,7 @@ public class BoardServiceImpl implements BoardService {
         CategoryVO categoryVO;
         categoryVO = categoryRepository.findById(cate).orElse(null);
         if (categoryVO == null) {
-            return  null;
+            return null;
         } else {
             List<BoardDto> categoryBoardList = boardRepository.findByCategoryInBoard(categoryVO.getCategory());
             return categoryBoardList;
@@ -57,11 +72,11 @@ public class BoardServiceImpl implements BoardService {
         BoardDto newBoard = boardRepository.save(dto);
         CategoryVO category = categoryRepository.findByCategory(dto.getB_category());
 
-         if (category == null) {
-             category = new CategoryVO();
-             category.setCategory(dto.getB_category());
-             categoryRepository.save(category);
-         }
+        if (category == null) {
+            category = new CategoryVO();
+            category.setCategory(dto.getB_category());
+            categoryRepository.save(category);
+        }
         return newBoard;
     }
 
@@ -83,7 +98,7 @@ public class BoardServiceImpl implements BoardService {
             }
         }
 
-         boardRepository.deleteById(b_seq);
+        boardRepository.deleteById(b_seq);
 
     }
 }
